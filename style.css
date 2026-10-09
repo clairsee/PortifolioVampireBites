@@ -1,0 +1,729 @@
+@font-face {
+    font-family: 'MinaHa';
+    src: url('fonts/MinaHa.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --body-color: rgb(14, 5, 5);
+    --selection-color: rgb(245, 238, 224);
+    --accent: rgb(200, 50, 50);
+    --card: rgb(255, 250, 224);
+    --polaroid: rgb(244, 239, 224);
+    --muted: rgb(150, 135, 130);
+    --shadow: rgba(0, 0, 0, 0.6);
+    --icon-filter: invert(0.4);
+
+    --img: url('img/bat.png');
+}
+
+body.light {
+    /* CLARO */
+    --body-color: rgb(233, 224, 211);
+    --selection-color: rgb(26, 5, 5);
+    --shadow: rgba(60, 20, 20, 0.3);
+    --icon-filter: invert(0.6);
+}
+
+a {
+    color: inherit;
+}
+
+::selection {
+    background-color: var(--selection-color);
+    color: var(--body-color);
+}
+
+* {
+    font-family: 'MinaHa', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    transition: background-color 0.4s ease;
+    background-color: var(--body-color);
+    overflow-x: hidden;
+    padding: 0% 12.5vw 0% 12.5vw;
+}
+
+#main-screen {
+    font-size: 2rem;
+    background-color: var(--accent);
+    width: 100vw;
+    height: 100vh;
+
+    -webkit-mask-image: linear-gradient(#000, #000), var(--img);
+    mask-image: linear-gradient(#000, #000), var(--img);
+
+    -webkit-mask-size: 100% 100%, 45vw auto;
+    mask-size: 100% 100%, 45vw auto;
+
+    -webkit-mask-repeat: no-repeat, no-repeat;
+    mask-repeat: no-repeat, no-repeat;
+
+    -webkit-mask-position: center, center;
+    mask-position: center, center;
+
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    padding: 4vh;
+}
+
+#main-screen p {
+    font-size: 4rem;
+    color: var(--body-color);
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 0.9;
+    height: 16vh;
+}
+
+#main-screen span {
+    font-size: 1.5rem;
+    color: var(--body-color);
+    text-transform: uppercase;
+    font-weight: 500;
+    height: 4vh;
+}
+
+#main-screen a {
+    position: absolute;
+    bottom: 4vh;
+    right: 4vh;
+}
+
+
+#next-section {
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--selection-color);
+    z-index: 3;
+}
+
+#next-section h2 {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+#third-section {
+    position: absolute;
+    top: 200vh;
+    left: 0;
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--selection-color);
+    z-index: 3;
+}
+
+#batCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#divisor {
+    height: 100vh;
+}
+
+#dark-mode-img {
+    width: 4vw;
+}
+
+.section-title {
+    color: var(--accent);
+    font-size: 3rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin-bottom: 6vh;
+    width: 100%;
+}
+
+/* Abilities */
+
+#abi-card1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 45vh);
+    justify-items: center;
+    justify-content: space-between;
+}
+
+.abi-card {
+    position: relative;
+    padding: 0.5vw;
+    width: 10vw;
+    height: 30vh;
+    background-color: var(--card);
+    color: var(--ink);
+    box-shadow: 0 6px 15px var(--shadow);
+    border-radius: 10px;
+    transition: transform 0.15s ease-out;
+}
+
+.abi-card div {
+    top: 0.25vw;
+    left: 0.25vw;
+    border: 2px solid;
+    border-radius: 10px;
+    position: absolute;
+    width: 9.5vw;
+    height: 29vh;
+}
+
+
+.abi-card img:first-of-type {
+    width: 1.5vw;
+    position: absolute;
+    top: 2vw;
+    left: 1vw;
+}
+
+.abi-card img:last-of-type {
+    width: 1.5vw;
+    position: absolute;
+    bottom: 2vw;
+    right: 1vw;
+    transform: rotate(180deg);
+}
+
+.abi-card span:first-of-type {
+    width: 1.5vw;
+    position: absolute;
+    top: 0.8vw;
+    left: 1.45vw;
+    font-weight: bold;
+    font-size: 2vh;
+}
+
+.abi-card span:last-of-type {
+    width: 1.5vw;
+    position: absolute;
+    bottom: 0.8vw;
+    right: 1.45vw;
+    font-weight: bold;
+    font-size: 2vh;
+    transform: rotate(180deg);
+}
+
+.abi-icon {
+    height: 8vh;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -30%);
+}
+
+.abi-card p:first-of-type {
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -60%);
+    font-size: 2vh;
+    font-weight: bolder;
+}
+
+.abi-card p:last-of-type {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -70%);
+    font-size: 1.5h;
+    font-weight: lighter;
+}
+
+/* Projects */
+
+#pro {
+    height: 80vh;
+}
+
+.polaroid-row {
+    display: flex;
+    justify-content: center;
+    gap: 4vw;
+    flex-wrap: wrap;
+}
+
+.polaroid {
+    background-color: var(--polaroid);
+    box-shadow: 0 6px 15px var(--shadow);
+    padding: 1vw 1vw 4vw 1vw;
+    width: 18vw;
+    border-radius: 3px;
+    transition: transform 0.3s;
+}
+
+.polaroid:first-child {
+    transform: rotate(-3deg);
+}
+
+.polaroid:last-child {
+    transform: rotate(3deg) translateY(2vh);
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.polaroid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    background-color: rgb(26, 5, 5);
+}
+
+.polaroid p {
+    margin-top: 1vw;
+    text-align: center;
+    color: var(--ink);
+    font-size: 2.5vh;
+}
+
+
+
+/* Footer Config */
+
+footer {
+    height: 10vh;
+    display: grid;
+    grid-template-rows: 4vh 6vh;
+}
+
+#divider {
+    margin: 2% 0% 1% 0%;
+    background-color: var(--muted);
+    height: 0.2vh;
+}
+
+#footer-main {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    height: 1vh;
+
+    div {
+        display: flex;
+    }
+}
+
+footer p {
+    font-size: 2.5vh;
+    display: inline-block;
+    color: var(--muted);
+    margin-right: 2%;
+}
+
+footer a {
+    margin-left: 0.5%;
+    display: inline-block;
+
+    img {
+        height: 4vh;
+        filter: var(--icon-filter);
+    }
+}
+
+footer span {
+    text-align: right;
+    font-size: 2vh;
+    color: rgb(102, 102, 102);
+    width: 100%;
+    display: inline-block;
+}
+
+/* Contact */
+
+#cont {
+    padding-bottom: 10vh;
+}
+
+#contact {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#contact label {
+    color: var(--selection-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+    margin-top: 1vh;
+}
+
+#contact input,
+#contact textarea {
+    background-color: var(--card);
+    color: var(--ink);
+    border: 2px solid var(--muted);
+    border-radius: 6px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+#contact input:user-invalid,
+#contact textarea:user-invalid {
+    border-color: var(--accent);
+}
+
+#contact button {
+    margin-top: 2vh;
+    padding: 0.9rem;
+    background-color: var(--accent);
+    color: var(--card);
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: transform 0.15s ease-out;
+}
+
+#contact button:hover {
+    transform: scale(1.03);
+}
+
+/* About me */
+
+#about-me {
+    margin-bottom: 15vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.about-card {
+    width: 40vw;
+    padding: 2rem 2.5rem;
+    background-color: rgba(128, 128, 128, 0.08);
+    border-radius: 10px;
+}
+
+.about-card p {
+    color: var(--selection-color);
+    font-size: 1.2rem;
+    line-height: 1.7;
+}
+
+.about-card p:last-child {
+    margin-top: 1.5rem;
+}
+
+/* Modal */
+
+
+#modal {
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 0;
+    margin: auto;
+    width: 15vw;
+    height: 20vh;
+    background-color: var(--card);
+}
+
+#modal[open] {
+    animation: modal 0.4s ease;
+}
+
+@keyframes modal {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+#modal::backdrop {
+    background: rgb(0 0 0 / 0.6);
+}
+
+#modal div {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 24px;
+    text-align: center;
+    justify-content: center;
+}
+
+#modal img {
+    width: 64px;
+    margin-bottom: 12px;
+}
+
+#modal h3 {
+    width: 100%;
+}
+
+#modal p {
+    margin-bottom: 1vw;
+}
+
+#modal button {
+    padding: 0.4rem;
+    margin: 0 0.5vw 0 0.5vw;
+    width: 5vw;
+    background-color: var(--accent);
+    color: var(--card);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: transform 0.15s ease-out;
+}
+
+#modal button:last-of-type {
+    background-color: var(--muted);
+}
+
+#modal button:hover {
+    transform: scale(1.03);
+}
+
+
+@media (max-width: 550px) {
+    body {
+        background-color: var(--body-color);
+        overflow-x: hidden;
+        padding: 0% 2% 0% 2%;
+    }
+
+    /* Main Screen */
+
+    #main-screen span {
+        font-size: 1.4rem;
+    }
+
+    #main-screen p {
+        font-size: 3.5rem;
+    }
+
+    #dark-mode-img {
+        width: 16vw;
+    }
+
+    #main-screen {
+        -webkit-mask-size: 100% 100%, 45vw auto;
+        mask-size: 100% 100%, 80vw auto;
+    }
+
+    /* Footer */
+
+    #divider {
+        height: 0.1vh;
+    }
+
+    footer {
+        grid-template-rows: 2vh 8vh;
+    }
+
+    footer p {
+        font-size: 1.5vh;
+    }
+
+    footer a {
+        img {
+            height: 2vh;
+            filter: invert(0.25);
+        }
+    }
+
+    footer span {
+        font-size: 1.25vh;
+    }
+
+    /* Abilities */
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 3vh;
+    }
+
+    #abi {
+        margin-top: 5vh;
+        display: grid;
+        align-content: center;
+    }
+
+    #abi-card1 {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 30vh);
+    }
+
+    .abi-card {
+        width: 30vw;
+        height: 20vh;
+    }
+
+    .abi-card img:first-of-type {
+        width: 4vw;
+        position: absolute;
+        top: 5.75vw;
+        left: 1.3vw;
+    }
+
+    .abi-card img:last-of-type {
+        width: 4vw;
+        position: absolute;
+        bottom: 5.75vw;
+        right: 1.3vw;
+        transform: rotate(180deg);
+    }
+
+    .abi-card span:first-of-type {
+        width: 1.5vw;
+        position: absolute;
+        top: 0.5vw;
+        left: 1.5vw;
+        font-weight: bold;
+        font-size: 2vh;
+    }
+
+    .abi-card span:last-of-type {
+        width: 1.5vw;
+        position: absolute;
+        bottom: 0.5vw;
+        right: 1.5vw;
+        font-weight: bold;
+        font-size: 2vh;
+        transform: rotate(180deg);
+    }
+
+    .abi-icon {
+        height: 6vh;
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        transform: translate(-50%, -30%);
+    }
+
+    .abi-card p:first-of-type {
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -60%);
+        font-size: 1.75vh;
+        font-weight: bolder;
+    }
+
+    .abi-card p:last-of-type {
+        position: absolute;
+        left: 50%;
+        top: 75%;
+        transform: translate(-50%, -75%);
+        font-size: 1.25h;
+        font-weight: lighter;
+    }
+
+    .abi-card div {
+        border: 0px solid;
+    }
+
+    /* Projects */
+
+    #pro {
+        height: 45vh;
+    }
+
+    .polaroid {
+        width: 42vw;
+        padding: 2vw 2vw 8vw 2vw;
+    }
+
+    .polaroid p {
+        margin-top: 2vw;
+        font-size: 2vh;
+    }
+
+    /* About me */
+
+    .about-card {
+        width: 80vw;
+    }
+
+    .about-card p {
+        font-size: 0.95rem;
+    }
+
+    /* Modal */
+
+    #modal {
+        width: 65vw;
+        height: 23vh;
+    }
+
+    #modal p {
+        margin-bottom: 2.5vw;
+    }
+
+    #modal button {
+        padding: 0.4rem;
+        margin: 0 1vw 0 1vw;
+        width: 20vw;
+        background-color: var(--accent);
+        color: var(--card);
+        border-radius: 6px;
+        font-size: 0.8rem;
+        border: none;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        transition: transform 0.15s ease-out;
+    }
+
+    #modal button:last-of-type {
+        background-color: var(--muted);
+    }
+
+    #modal button:hover {
+        transform: scale(1.03);
+    }
+}

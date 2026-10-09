@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/icon.png" />
+    <title>Vampire Bites</title>
+</head>
+
+<body onload="randomImg()">
+    <div id="main-screen">
+        <span>Técnico de Informática</span>
+        <p>Bernardo <br> souza <br></p>
+        <a id="dark-mode-button" href="#next-section"><img src="img/sun.png" id="dark-mode-img"></a>
+    </div>
+    <canvas id="batCanvas"></canvas>
+    <section id="divisor"></section>
+
+    <main>
+        <section id="about-me">
+            <h2 class="section-title">Sobre mim</h2>
+
+            <div class="about-card">
+                <p class="about-intro">
+                    Sou estudante do 2º ano do Ensino Médio Técnico no Colégio COTEMIG,
+                    com interesse contínuo pela área de tecnologia. Venho desenvolvendo
+                    habilidades em lógica de programação e em linguagens mais complexas,
+                    unindo facilidade de aprendizado, organização e gosto por resolver
+                    problemas no dia a dia.
+                </p>
+                <p>
+                    Tenho experiência prática na instalação e manutenção de sistemas
+                    operacionais Linux e Windows, no uso de ferramentas digitais e
+                    ambientes online, e na organização de projetos de longo prazo,
+                    incluindo depuração, correção de bugs e otimização de desempenho.
+                    Busco uma oportunidade para colocar esse conhecimento em prática e
+                    crescer profissionalmente na área.
+                </p>
+            </div>
+        </section>
+        <section id="abi">
+            <h2 class="section-title">Habilidades</h2>
+            <div id="abi-card1">
+                <div class="abi-card">
+                    <div></div>
+                    <span>2</span>
+                    <span>2</span>
+                    <img src="img/naipe1.png">
+
+                    <img src="img/icon-html.png" class="abi-icon">
+                    <p>HTML</p>
+                    <p>Avançado</p>
+
+                    <img src="img/naipe1.png">
+                </div>
+                <div class="abi-card">
+                    <div></div>
+                    <span>5</span>
+                    <span>5</span>
+                    <img src="img/naipe1.png">
+
+                    <img src="img/css.png" class="abi-icon">
+                    <p>CSS</p>
+                    <p>Intermediário</p>
+
+                    <img src="img/naipe1.png">
+                </div>
+                <div class="abi-card">
+                    <div></div>
+                    <span>9</span>
+                    <span>9</span>
+                    <img src="img/naipe1.png">
+
+                    <img src="img/javascript.png" class="abi-icon">
+                    <p>JS</p>
+                    <p>Iniciante</p>
+
+                    <img src="img/naipe1.png">
+                </div>
+                <div class="abi-card">
+                    <div></div>
+                    <span>6</span>
+                    <span>6</span>
+                    <img src="img/naipe1.png">
+
+                    <img src="img/csharp.png" class="abi-icon">
+                    <p>C#</p>
+                    <p>Intermediário</p>
+
+                    <img src="img/naipe1.png">
+                </div>
+                <div class="abi-card">
+                    <div></div>
+                    <span>A</span>
+                    <span>A</span>
+                    <img src="img/naipe1.png">
+
+                    <img src="img/java.png" class="abi-icon">
+                    <p>Java</p>
+                    <p>Iniciante</p>
+
+                    <img src="img/naipe1.png">
+                </div>
+                <div class="abi-card">
+                    <div></div>
+                    <span>4</span>
+                    <span>4</span>
+                    <img src="img/naipe1.png">
+
+                    <img src="img/mysql..png" class="abi-icon">
+                    <p>MySQL</p>
+                    <p>Intermediário</p>
+
+                    <img src="img/naipe1.png">
+                </div>
+            </div>
+        </section>
+
+        <section id="pro">
+            <h2 class="section-title">Projetos</h2>
+            <a href="https://shiverbanks.github.io/LandingPage/">
+                <div class="polaroid-row">
+                    <div class="polaroid">
+                        <img src="img/projeto1.png">
+                        <p>Aionm</p>
+                    </div>
+            </a>
+
+            <a href="https://clairsee.github.io/Site-Aionm/">
+                <div class="polaroid">
+                    <img src="img/projeto2.png">
+                    <p>Landing Page</p>
+                </div>
+            </a>
+        </section>
+
+        <section id="cont">
+            <h2 class="section-title">Contato</h2>
+            <form id="contact" action="https://formspree.io/f/xrpeqlop" method="POST">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required">
+
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone" oninput=maskTel() placeholder="+55 (00) 0 0000-0000" required>
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+                <button type="submit">Confirmar</button>
+            </form>
+        </section>
+    </main>
+
+
+
+
+    <footer>
+        <div id="divider"></div>
+        <div id="footer-main">
+            <div>
+                <p>Bernardo Souza</p>
+                <a href="https://github.com/clairsee"><img src="img/github.png"></a>
+                <a href=""><img src="img/linkedin.png"></a>
+            </div>
+            <div>
+                <span>2026</span>
+            </div>
+        </div>
+    </footer>
+
+    <dialog id="modal">
+        <div>
+            <img src="img/bat.png">
+            <h3>Confirmar Envio?</h3>
+            <p>Tenha certeza de seus dados</p>
+            <button type="button" onclick="sendForm()">Enviar</button>
+            <button type="button" command="close" commandfor="modal">Fechar</button>
+        </div>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
